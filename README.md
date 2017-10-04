@@ -7,6 +7,7 @@ Predict bitcoin value for the next 9minutes, with Recurrental Neural Network GRU
 
 <ul>
 <li>Python3</li>
+<li>python-requests</li>
 <li><a href="http://keras.io/">Keras 2</a></li>
 <li><a href="http://www.numpy.org/">numpy</a></li>
 <li><a href="http://matplotlib.org/">MatploitLib</a></li>

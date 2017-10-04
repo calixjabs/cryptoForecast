@@ -13,9 +13,9 @@ keys = ["price_usd","24h_volume_usd","market_cap_usd","available_supply","total_
 vals = [0]*len(keys)
 
 while True:
-  data = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/").json()[0]
-  bstamp = requests.get("https://www.bitstamp.net/api/v2/ticker/btcusd/").json() 
-  bkc = requests.get("https://blockchain.info/ticker").json()
+  data = requests.get("https://api.coinmarketcap.com/v1/ticker/neo/").json()[0]
+  coincap = requests.get("http://coincap.io/page/NEO").json() 
+  bittrex = requests.get("https://bittrex.com/api/v1.1/public/getticker?market=usdt-neo").json()
   
   for d in data.keys():
      if d in keys:
@@ -24,8 +24,8 @@ while True:
   for val in vals:
        f.write(val+",")
       
-  f.write("{},{},".format(bstamp["volume"],bstamp["vwap"]))
-  f.write("{},{},{}".format(bkc["USD"]["sell"],bkc["USD"]["buy"],bkc["USD"]["15m"]))
+  f.write("{},{},".format(coincap["volume"],coincap["vwap_h24"]))
+  f.write("{},{},{}".format(bittrex["result"]["Bid"],bittrex["result"]["Ask"],bittrex["result"]["Last"]))
   f.write("\n")
   f.flush()
   time.sleep(9*60)
